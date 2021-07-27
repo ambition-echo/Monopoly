@@ -39,15 +39,21 @@ def put_pic():
 
 def put_font():
     global screen
-    screen.blit(player.player1.name_font, (81*5, 81*6))
-    screen.blit(player.player2.name_font, (81*5, 81))
+    screen.blit(player.player1.name_font, (81 * 5, 81 * 6))
+    screen.blit(player.player2.name_font, (81 * 5, 81))
     screen.blit(player.player3.name_font, (81, 81))
-    screen.blit(player.player1.assets_font, (81*5, 81*6+40))
-    screen.blit(player.player2.assets_font, (81*5, 81+40))
-    screen.blit(player.player3.assets_font, (81, 81+40))
-    screen.blit(background.rounds, (81*4+5, 81*4+30))
-    screen.blit(event.massages[0], (81, 81*6))
-    screen.blit(event.massages[1], (81, 81*6+30))
+    screen.blit(player.player1.assets_font, (81 * 5, 81 * 6 + 40))
+    if player.player1 not in player.aliveplayers:
+        screen.blit(event.massages[2], (81 * 5, 81 * 6 + 70))
+    screen.blit(player.player2.assets_font, (81 * 5, 81 + 40))
+    if player.player2 not in player.aliveplayers:
+        screen.blit(event.massages[2], (81 * 5, 81 + 70))
+    screen.blit(player.player3.assets_font, (81, 81 + 40))
+    if player.player3 not in player.aliveplayers:
+        screen.blit(event.massages[2], (81, 81 + 70))
+    screen.blit(background.rounds, (81 * 4 + 5, 81 * 4 + 30))
+    screen.blit(event.massages[0], (81, 81 * 6 + 30))
+    screen.blit(event.massages[1], (81, 81 * 6))
     pygame.display.update()
 
 
@@ -63,7 +69,7 @@ def main():
                 if i.key == K_SPACE:
                     print('success')
                     background.isover = True
-        background.isover = True
+        #background.isover = True
         put_pic()
         put_font()
 
